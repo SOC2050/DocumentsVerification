@@ -11,7 +11,7 @@ from django.urls import reverse
 
 def Login(request):
     
-   
+    logout = None  
     login = request.session.get("login", False)
     Email = request.session.get("Email", None)
     Role = request.session.get("Role", None)
