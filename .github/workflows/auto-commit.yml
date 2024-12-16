@@ -4,12 +4,6 @@ on:
   push:
     paths:
       - '**/*'            # Watch all files in the repository
-    paths-ignore:
-      - 'static/**'       # Ignore all files in the `static` directory
-      - 'media/**'        # Ignore all files in the `media` directory
-      - '*.log'           # Ignore log files
-      - '*.tmp'           # Ignore temporary files
-
 jobs:
   auto-commit:
     runs-on: ubuntu-latest
