@@ -1,0 +1,146 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block pagecss %}
+<link rel="stylesheet" href="{% static 'student/CSS/application.css' %}" type="text/css" media="all">
+{% endblock %}
+
+{% block mainpage %}
+<div class="container">
+    <h2><b>Application Form</b></h2>
+    <form method="POST" enctype="multipart/form-data" novalidate action="{% url 'StudentApplication' %}">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Application ID</label>
+                    <input type="text" disabled name="applicationId" class="form-control" value="{{ values.applicationId }}">
+                </div>
+            </div>
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Name of Applicant</label>
+                    <input type="text" disabled name="applicantName" class="form-control" value="{{ values.applicantName }}">
+                </div>
+            </div>
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Name of the Applicant’s Mother</label>
+                    <input type="text" name="motherName" class="form-control" value="{{ values.motherName }}">
+                    <span class="text-danger">{{ errors.motherName }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Date of Birth</label>
+                    <input type="date" name="dob" class="form-control" value="{{ values.dob }}">
+                    <span class="text-danger">{{ errors.dob }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Email ID</label>
+                    <input type="email" disabled name="email" class="form-control" value="{{ values.email }}">
+                </div>
+            </div>
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Contact No</label>
+                    <input type="number" disabled name="contactNumber" class="form-control" value="{{ values.contactNumber }}">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Nationality</label>
+                    <input type="text" name="nationality" class="form-control" value="{{ values.nationality }}">
+                    <span class="text-danger">{{ errors.nationality }}</span>
+                </div>
+            </div>
+            <div class="col">
+
+                <div class="mt-3">
+                    <label class="form-label">Category</label>
+                    <select name="category" id="type" class="form-control">
+                        <option value="sc">sc</option>
+                        <option value="ST">ST</option>
+                        <option value="VJNT">VJNT</option>
+                        <option value="SBC">SBC</option>
+                        <option value="OBC">OBC</option>
+                        <option value="EWS">EWS</option>
+                        <option value="Open">Open</option>
+                    </select>
+                    <span class="text-danger">{{ errors.category }}</span>
+                </div>
+
+
+             
+            </div>
+            <div class="col">
+
+
+                <div class="mt-3">
+                    <label class="form-label">Gender</label>
+                    <select name="gender" id="type" class="form-control">
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Transgender">Transgender</option>
+                    </select>
+                    <span class="text-danger">{{ errors.gender }}</span>
+                </div>
+
+   
+            </div>
+        </div>
+        <div class="mt-3">
+            <label class="form-label">Address for Communication</label>
+            <input type="text" name="address" class="form-control" value="{{ values.address }}">
+            <span class="text-danger">{{ errors.address }}</span>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">10th Marks</label>
+                    <input type="text" name="marks10" class="form-control" value="{{ values.marks10 }}">
+                    <span class="text-danger">{{ errors.marks10 }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">12th Marks</label>
+                    <input type="text" name="marks12" class="form-control" value="{{ values.marks12 }}">
+                    <span class="text-danger">{{ errors.marks12 }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Upload Image with Signature</label>
+                    <input type="file" name="uploadImage" class="form-control">
+                    <span class="text-danger">{{ errors.uploadImage }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">10th School Name</label>
+                    <input type="text" name="school10" class="form-control" value="{{ values.school10 }}">
+                    <span class="text-danger">{{ errors.school10 }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">12th College Name</label>
+                    <input type="text" name="college12" class="form-control" value="{{ values.college12 }}">
+                    <span class="text-danger">{{ errors.college12 }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            <input type="submit" class="btn btn-primary" value="Save & Submit">
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,47 @@
+.container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 0.5rem 2rem 2rem 2rem ;
+
+  background-color: rgba(240, 250, 250, 0.7);
+  border-radius: 10px;
+  box-shadow: 2px 4px 15px rgb(43, 43, 43);
+  
+  xt-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+h2{
+    
+    text-align: center ;
+      font-weight: bold;
+      font-size: 2.5rem ;
+      color: rgb(12 ,12 ,79 );
+}
+
+.form-label{
+    
+    color: RGB(12,13,50) ;
+    
+}
+
+
+
+
+.btnn {
+  background-color: #8654cd;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1.4rem ;
+  border-radius: 5px;
+  cursor: pointer;
+
+  display: block;
+  width: 100%;
+  text-align: center;
+}

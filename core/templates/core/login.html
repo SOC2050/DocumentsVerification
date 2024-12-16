@@ -1,0 +1,77 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block pagecss %}
+<link rel="stylesheet" href="{% static 'student/CSS/login.css'  %}" type="text/css" media="all">
+{% endblock %}
+
+
+
+
+
+{% block mainpage %}
+<div class="h-100 w-100 d-flex flex-column justify-content-center align-items-center">
+
+    {% if request.session.registred %}
+    <div id="successMessage" class="alert alert-success alert-dismissible fade show " role="alert" >
+        LogIn Is Successful! Now You Can Fill Form
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+        // Hide the success message after 5 seconds
+        alert("Registration is Successfully ! No login ")
+        
+        setTimeout(function() {
+            var successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }, 5000);  // 5000 ms = 5 seconds
+    </script>
+    {% endif %}
+	
+    <div class="container">
+        <h2 class="my-3">LogIn</h2>
+
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+
+
+                 <!-- Radio Buttons for identification of student or Administrator -->
+                 <div class="mb-3">
+                         <label class="form-label role">Select Role</label>
+                         <div class="form-check">
+                                 <input class="form-check-input" type="radio" name="role" id="student" value="Student" required>
+                                 <label class="form-check-label" for="student">
+                                         Student
+                                 </label>
+                         </div>
+                         <div class="form-check">
+                                 <input class="form-check-input" type="radio" name="role" id="Administrator" value="Administrator" required>
+                                 <label class="form-check-label" for="Administrator">
+                                   Administrator
+                                 </label>
+                         </div>
+                 </div>
+
+
+
+            <!-- Email Input Field -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ form_data.email }}">
+                <span class="text-danger">{{ errors.email  }}</span>
+            </div>
+            <!-- Password Input Field -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+                <span class="text-danger">{{ errors.password }}</span>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" class="btnn">LogIn</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

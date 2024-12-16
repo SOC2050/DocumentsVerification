@@ -1,0 +1,77 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block pagecss %}
+
+<link rel="stylesheet" href="{% static 'institude/CSS/instituteDashboard.css' %}" type="text/css" media="all" />
+
+{% if section == "allApplication" %}
+<link rel="stylesheet" href="{% static 'institude/CSS/allApplication.css' %}" type="text/css" media="all">
+{% elif section == "studentApplication" %}
+<link rel="stylesheet" href="{% static 'institude/CSS/studentApplication.css' %}" type="text/css" media="all">
+{% endif %}
+
+{% endblock %}
+
+{% block mainpage %}
+
+
+<div class="institute-dashboard d-flex">
+
+    <div class="sidebar">
+        <div>
+            <img id="profile-photo" src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="200" height="200" alt="profile">
+        </div>
+        <div class="logo">
+            <h3>Faculty</h3>
+        </div>
+        <ul>
+            <li><a href="{% url 'instituteDashboard' %}?section=allApplication"> All Students</a></li>
+       
+
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <div class="content d-flex">
+            
+            <h2 class="mb-4">Document Verification ___________________________________</h2>
+        </div>
+
+
+        <div class="verification-section">
+
+
+            {% if section == "allApplication" %}
+            {% include "institude/allApplication.html" %}
+            {% elif section == "studentApplication" %}
+            {% include "institude/studentApplication.html" %}
+
+            {% elif section == "updateDocs" %}
+
+            {% include "institude/studentStatus.html"   %}
+   
+            {% endif %}
+            
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
+
+
+{% block pagejs %}
+
+{% if section == "allApplication" %}
+<script src="{% static 'institude/JS/allApplication.js' %}" type="text/javascript" charset="utf-8"></script>
+{% elif section == "studentApplication" %}
+<script src="{% static 'institude/JS/studentApplication.js' %}" type="text/javascript" charset="utf-8"></script>
+{% endif %}
+
+{% endblock %}

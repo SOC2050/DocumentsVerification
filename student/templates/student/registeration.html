@@ -1,0 +1,85 @@
+
+
+{% extends "core/base.html" %}
+{% load static %}
+
+
+{% block pagecss %}
+<link rel="stylesheet" href="{% static 'student/CSS/registration.css' %}" type="text/css" media="all">
+{% endblock %}
+
+
+{% block mainpage %}
+<div class="h-80 w-80 d-flex flex-column justify-content-center align-items-center">
+
+
+
+
+    {% if registred %}
+    <div id="successMessage" class="alert alert-success alert-dismissible fade show " role="alert" >
+        Registration Is Successful! Go for Login
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <script>
+        // Hide the success message after 5 seconds
+        const alt = alert("Your Registration is Successfully , Go for Login")
+        setTimeout(function() {
+            var successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }, 5000);  // 5000 ms = 5 seconds
+    </script>
+    {% endif %}
+
+    <div class="container ">
+        <h2 class="my-2">Registeration</h2>
+
+        <form method="post" action="{% url 'StudentRegisteration' %}">
+            {% csrf_token %}
+            <!-- Name Input Field -->
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ form_data.name }}">
+                <span class="text-danger">{{ errors.name }}</span>
+            </div>
+
+            <!-- Email Input Field -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ form_data.email }}">
+                <span class="text-danger">{{ errors.email }}</span>
+            </div>
+
+            <!-- Phone Input Field -->
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="{{ form_data.phone }}">
+                <span class="text-danger">{{ errors.phone }}</span>
+            </div>
+
+            <!-- Password Input Field -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password">
+                
+                {% for err in errors.password %}
+                <p class="text-danger" >{{ err }}</p>
+                {% endfor %}
+                
+            </div>
+
+            <!-- Confirm Password Input Field -->
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                <span class="text-danger">{{ errors.confirm_password }}</span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btnn">Register</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

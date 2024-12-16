@@ -1,0 +1,142 @@
+{% load static %}
+{% block pagecss %}
+<link rel="stylesheet" href="{% static 'institude/CSS/studentApplication.css' %}" type="text/css" media="all">
+{% endblock %}
+<div class="report">
+
+    <!-- Photo and Basic Details Section -->
+    <div class="photo-section">
+        <div class="basic-details">
+            <p><strong>Application ID:</strong> {{ values.applicationId }}</p>
+            <p><strong>Email:</strong> {{ values.email }}</p>
+            <p><strong>Contact:</strong> {{ values.contactNumber }}</p>
+        </div>
+        <img class="photo w-25 h-25" src="{{ values.photo }}" alt="Applicant Photo" />
+    </div>
+
+    <!-- Other Details Section -->
+    <div class="other-details">
+
+        <!-- Section 1 -->
+        <div class="section-1">
+            <p><strong>Applicant Name:</strong> {{ values.applicantName }}</p>
+            <p><strong>Mother's Name:</strong> {{ values.motherName }}</p>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="section-2">
+            <p><strong>Date of Birth:</strong> {{ values.dob }}</p>
+            <p><strong>Nationality:</strong> {{ values.nationality }}</p>
+            <p><strong>Caste:</strong> {{ values.category }}</p>
+            <p><strong>Gender:</strong> {{ values.gender }}</p>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="section-3">
+            <p><strong>Marks in 10th:</strong> {{ values.marks10 }}</p>
+            <p><strong>Marks in 12th:</strong> {{ values.marks12 }}</p>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="section-4">
+            <p><strong>Residential Address:</strong> {{ values.address }}</p>
+            <p><strong>10th School Address:</strong> {{ values.school10 }}</p>
+            <p><strong>12th College Address:</strong> {{ values.college12 }}</p>
+        </div>
+
+    </div>
+
+    <!-- Note Section -->
+    <div class="note">
+        <strong>Note:</strong> Final submission of the form will be completed when all documents are approved; otherwise, it will remain incomplete.
+    </div>
+
+
+    
+
+
+<!-- Documents Section -->
+<div class="documents-section bg-light">
+    <form action="{% url 'instituteDashboard' %}?section=updateDocs&email={{values.email}}" method="post">
+        {% csrf_token %}
+        <table class="document-table">
+            <thead>
+                <tr>
+                    <th>Document Name</th>
+                    <th>View Document</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in docs.items %}
+                <tr>
+                    <td>{{ value.name }}</td>
+                    <td>
+                        <a href="{{ value.url }}" target="_blank">
+                            <img class="doc-img w-25 h-25" src="{{ value.url }}" alt="{{ value.name }}" />
+                        </a>
+                    </td>
+                    <td>
+                        {% if value.verified == "approved" %}
+                        <span class="approved">Approved</span>
+                        {% elif value.verified == "rejected" %}
+                        <span class="rejected">Rejected</span>
+                        {% else %}
+                        <span class="pending">Pending</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if value.verified == "rejected" or value.verified == "pending" %}
+                        
+                        <input type="radio" name="{{ value.name }}" required value="approved" id="{{ value.name }}_approved" />
+                        <label for="{{ value.name }}_approved">Approve</label>
+
+                        <input type="radio" name="{{ value.name }}" required value="rejected" id="{{ value.name }}_rejected" />
+                        <label for="{{ value.name }}_rejected">Reject</label>
+                        
+                        {% else %}
+                        
+                         <div class="">
+                             Approved 
+                         </div>
+                        
+                        {% endif %}
+                    </td>
+                </tr>
+
+                <!-- New row for rejection reason, initially hidden -->
+                <tr class="rejection-row" style="display: none;">
+                    <td colspan="4">
+                        <button type="button" class="close-btn" id="{{key}}_button">X</button>
+                        <textarea
+                            class="reject-reason"
+                            name="{{ value.name }}_reason"
+                            id="{{ value.name }}_reason"
+                            placeholder="Enter rejection reason"
+                            rows="3"
+                        ></textarea>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if finalSubmition != "approved" %}
+        <input type="submit" class="btn btn-primary" name="submit" id="submit" value="Submit" />
+        {% endif %}
+    </form>
+</div>
+
+
+
+    <!-- Final Submission Status -->
+    <div class="final-submission">
+        {% if finalSubmition == "approved" %}
+        <p>Your application and document verification are successfully completed.</p>
+        {% endif %}
+    </div>
+
+</div>
+
+

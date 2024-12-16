@@ -1,0 +1,50 @@
+
+.container {
+    margin: 20px auto;
+    padding: 20px;  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;   
+}
+th {
+    padding: 5px 10px;
+    text-align: left;   
+}
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    color: #333;
+}
+tr:hover {
+    background-color: #f1f1f1;
+}
+.bg-light {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #e9ecef;
+    text-decoration: none;
+    
+}
+
+span {
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;   
+    color: #fff;
+    background-color: #6c757d;
+}
+
+span.approved {
+    background-color: #28a745;
+}
+
+span.rejected {
+    background-color: #dc3545;
+}
+
+

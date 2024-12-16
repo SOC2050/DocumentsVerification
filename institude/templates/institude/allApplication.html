@@ -1,0 +1,40 @@
+
+<h1>All students Page</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Application ID</th>
+            <th> Name</th>
+            <th>Status</th>
+            <th>Action</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% for student in students %}
+
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{student.name }}</td>
+            <td>{{ student.status }}</td>
+            <td>
+                
+                
+            {% if student.status == "approved" %}
+            
+            <a  disable > Submitted </a>
+            
+            {% else %}
+            
+                <a href="{% url 'instituteDashboard' %}?section=studentApplication&email={{student.email}}">Open</a>   
+            {% endif %}
+                
+            </td>
+         <td></td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>

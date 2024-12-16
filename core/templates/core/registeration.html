@@ -1,0 +1,69 @@
+{% extends "core/base.html" %}
+
+{% block mainpage %}
+
+
+<div class="d-flex justify-content-center align-items-center " >
+
+<div class="d-flex flex-column align-items-center bg-light w-50 mt-5">
+	<h2 class="my-3">Register</h2>
+	<form method="post" action="{% url 'registeration' %}">
+		{% csrf_token %}
+
+		<!-- Radio Buttons for identification of student or Administrator -->
+		<div class="mb-3">
+			<label class="form-label">Select Role</label>
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="role" id="student" value="Student" required>
+				<label class="form-check-label" for="student">
+					Student
+				</label>
+			</div>
+			<div class="form-check">
+				<input class="form-check-input" type="radio" name="role" id="Administrator" value="Administrator" required>
+				<label class="form-check-label" for="Administrator">
+				  Administrator
+				</label>
+			</div>
+		</div>
+
+		<div class="d-flex flex-column align-items center mb-3">
+		<!-- Name Input filed -->
+		<div class="mb-3">
+			<label for="name" class="form-label">Full Name</label>
+			<input type="text" class="form-control" id="name" name="name" required>
+		</div>
+
+		<!-- Email Input filed -->
+		<div class="mb-3">
+			<label for="email" class="form-label">Email</label>
+			<input type="email" class="form-control" id="email" name="email" required>
+		</div>
+
+		<!-- Phone Input filed -->
+		<div class="mb-3">
+			<label for="phone" class="form-label">Phone</label>
+			<input type="text" class="form-control" id="phone" name="phone" required>
+		</div>
+
+		<!-- Password Input filed-->
+		<div class="mb-3">
+			<label for="password" class="form-label">Password</label>
+			<input type="password" class="form-control" id="password" name="password" required>
+		</div>
+
+		<!-- Confirm Password Input -->
+		<div class="mb-3">
+			<label for="confirm_password" class="form-label">Confirm Password</label>
+			<input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+		</div>
+
+		<!-- Submit Button -->
+		<button type="submit" class="btn btn-primary ">Register</button>
+	  </div>
+	</form>
+</div>
+
+</div>
+
+{% endblock %}

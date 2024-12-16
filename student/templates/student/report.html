@@ -1,0 +1,167 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'student/CSS/report.css' %}" type="text/css" media="all">
+
+<div class="report">
+
+    <div class="photo-section">
+        <div class="basic-details">
+
+            <p>
+                <strong>Application ID : </strong> {{ values.applicationId }}
+            </p>
+            <p>
+                <strong>Email : </strong> {{ values.email }}
+            </p>
+
+            <p>
+                <strong>Contact : </strong> {{ values.contactNumber }}
+            </p>
+
+        </div>
+
+        <img class="photo" src="{{ values.photo }}" alt="" />
+
+    </div>
+
+
+
+    <div class="other-details">
+
+
+        <div class="section-1">
+
+
+            <p>
+                <strong>Applicant Name : </strong>  {{ values.applicantName }}
+            </p>
+            <p>
+                <strong> Mother Name :  </strong>  {{ values.motherName  }}
+            </p>
+
+
+        </div>
+
+        <div class="section-2">
+            <p>
+                <strong> Date of Birth :  </strong> {{ values.dob }}
+            </p>
+            <p>
+                <strong> Nationality :  </strong> {{ values.nationality }}
+            </p>
+            <p>
+                <strong> Cast :  </strong> {{ values.category }}
+            </p>
+
+            <p>
+                <strong> Gender :  </strong> {{ values.gender }}
+            </p>
+
+        </div>
+
+        <div class="section-3">
+
+
+
+
+            <p>
+                <strong> Marks Of 10Th : </strong>  {{ values.marks10 }}
+            </p>
+            <p>
+                <strong> Marks Of 12Th :  </strong>  {{ values.marks12  }}
+            </p>
+
+
+        </div>
+
+
+        <div class="section-4">
+
+            <p>
+                <strong> Residential Address :  </strong> {{ values.address }}
+            </p>
+
+            <p>
+                <strong> 10Th School Address :  </strong> {{ values.school10 }}
+            </p>
+            <p>
+                <strong> 12Th College Address :  </strong> {{ values.college12 }}
+            </p>
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="note">
+        <strong>Note : </strong> final submission of the form will be completed when all documents will be approved otherwise final submission is not completed
+    </div>
+
+    <div class="documents-section">
+
+        <div class="doc-titles">
+            <div class="doc-title">
+                Document Name
+            </div>
+            <div class="doc-title">
+                View Document
+            </div>
+            <div class="doc-title">
+                Status
+            </div>
+        </div>
+        {% for key , value in docs.items %}
+
+        <div class="document">
+
+            <div class="doc-name">
+                {{ value.name   }}
+            </div>
+
+            <img class="doc-img" src="{{ value.url }}" alt="" />
+
+            <div class="doc-status">
+
+                {% if value.verified == "approved" %}
+
+                <span class="approved">Approved</span>
+
+                {% elif value.verified == "rejected" %}
+
+                <span class="rejected">Rejected</span>
+
+                {% else %}
+
+                <span class="pending">Pending</span>
+
+                {% endif %}
+
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="final-submition">
+        {% if finalSubmition == "approved"  %}
+
+        your application and documentation verification is successfully completed
+
+        {% elif finalSubmition == "rejected" %}
+        
+        your application has been holded for few errors in documentation or some rejection of documentation
+        
+        {% else %}
+        
+        your application is still pending we need to proceed we will convey you
+        
+        {% endif %}
+
+    </div>
+
+
+</div>

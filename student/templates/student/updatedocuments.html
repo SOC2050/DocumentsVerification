@@ -1,0 +1,62 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'student/CSS/updatedocuments.css' %}" type="text/css" media="all">
+
+<div class="container">
+  
+    {% if finalSubmition == "uploaded" %}
+
+    <div class="">
+        
+      documents has been submitted please wait for response
+        
+    </div>
+    {% endif %}
+    <!-- If any document has 'reject' status, show the form -->
+ 
+    <form action="{% url 'StudentDashboard' %}?section=updateCurrentDocs" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    
+        <table >
+            <thead>
+                <tr>
+                <th>Document Name </th>
+                <th>Document View </th>
+                <th>Document Status</th>
+            </tr>
+            </thead>
+            {% for key, value in docs.items %}
+            <tr>
+                <td>{{ key|capfirst }}</td>  <!-- Capitalize the first letter of the key -->
+
+    <td >
+                <a class="bg-light" href="{{ value.url }}" target="_blank">
+                    <img class="doc-img w-25 h-25" src="{{ value.url }}" alt="{{ value.name }}" />
+                </a>
+            </td>
+            <td><span>{{ value.verified }}</span></td>
+        </tr>
+        <tr>
+            <td colspan="3">{{ value.reason }}</td> <!-- Display the reason -->
+        </tr>
+
+        {% if value.verified != "approved" %}
+        <tr>
+         
+            <td colspan="3">
+                <input type="file" name="{{ value.name }}" id="{{ value.name }}" />
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+
+    <!-- If any document has 'reject' status, show the form -->
+    {% if finalSubmition == "rejected" %}
+
+    <input type="submit" name="update" value="Update" />
+    {% endif %}
+</form>
+
+</div>

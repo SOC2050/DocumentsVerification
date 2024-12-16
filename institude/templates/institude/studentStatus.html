@@ -1,0 +1,64 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'institude/CSS/studentStatus.css' %}" type="text/css" media="all">
+
+<h1 class="">  Student Status </h1>
+
+<div class="">
+
+        <!-- Photo and Basic Details Section -->
+    <div class="photo-section">
+        <div class="basic-details">
+            <p><strong>Application ID:</strong> {{ values.applicationId }}</p>
+             <p><strong>Applicant Name :</strong> {{ values.Name }}</p>
+
+            <p><strong>Email:</strong> {{ values.email }}</p>
+            <p><strong>Contact:</strong> {{ values.contactNumber }}</p>
+        </div>
+        <img class="photo w-25 h-25" src="{{ values.photo }}" alt="Applicant Photo" />
+    </div>
+
+
+        <table border="1" class="">
+            <thead>
+                <tr class="d-flex">
+                    <th>Document Name</th>
+                    <th>View Document</th>
+                    <th>Status</th>
+                   <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in docs.items %}
+                <tr class="d-flex gap-2 justify-content-center">
+                    <td>{{ value.name }}</td>
+                    <td class="bg-light w-50">
+                        <a class="bg-light" href="{{ value.url }}" target="_blank">
+                            <img class="doc-img w-25 h-25" src="{{ value.url }}" alt="{{ value.name }}" />
+                        </a>
+                    </td>
+                    <td>
+                        {% if value.verified == "approved" %}
+                        <span class="approved">Approved</span>
+                        {% elif value.verified == "rejected" %}
+                        <span class="rejected">Rejected</span>
+                        {% else %}
+                        <span class="pending">Pending</span>
+                        {% endif %}
+                    </td>
+
+                </tr>
+
+                <!-- New row for rejection reason, initially hidden -->
+                <tr class="rejection-row" >
+                    <td colspan="3">
+                        
+                     {{ value.reason }}
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    
+</div>

@@ -1,0 +1,128 @@
+
+.institute-dashboard d-flex{
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgb(138, 43, 226);
+
+}
+.sidebar {
+            background-color: mediumslateblue;
+            width: 250px;
+            padding: 20px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: flex-start;
+            
+        }
+
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            background: blueviolet;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #FFFFFF;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        .sidebar ul li:hover {
+            background: navy;
+            transform: translateX(5px);
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+        }
+        h2{
+            font-size: 1.8em;
+            color: #6B3074;
+            padding-bottom: 10px;
+            
+        }
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info span {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.user-info img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.verification-section h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #6B3074;
+    color: white;
+}
+
+table tr:nth-child(even) {
+    background-color: #ecf0f1;
+}
+
+table tr:hover {
+    background-color: #bdc3c7;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2ecc71;
+}

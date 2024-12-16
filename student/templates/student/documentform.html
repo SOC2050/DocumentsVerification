@@ -1,0 +1,118 @@
+
+ {% extends "core/base.html" %}
+
+{% load static %}
+
+{% block pagecss %}
+<link rel="stylesheet" href="{% static 'student/CSS/documentform.css' %}" type="text/css" media="all">
+{% endblock %}
+
+{% block mainpage %}
+<div class="container">
+    <h2><b>Upload Your Documents</b></h2>
+
+    <form method="POST" enctype="multipart/form-data" action={% url 'UploadDocuments' %}  >
+        {% csrf_token %}
+        
+        <div class="row">
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">10th Marksheet</label>
+                    <input type="file" id="mark10" name="marksheetOf10th" class="form-control">
+                    <span class="text-danger">{{ form.marksheetOf10th }}</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">12th Marksheet</label>
+                    <input type="file" id="mark12" name="marksheetOf12th" class="form-control">
+                    <span class="text-danger">{{ form.marksheetOf12th }}</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">CET Score Card</label>
+                    <input type="file" id="cet" name="cetScoreCard" class="form-control">
+                    <span class="text-danger">{{ form.cetScoreCard }}</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">School Leaving Certificate</label>
+                    <input type="file" id="lc" name="schoolLC" class="form-control">
+                    <span class="text-danger">{{ form.schoolLC }}</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">College Leaving Certificate</label>
+                    <input type="file" id="tc" name="collegeLC" class="form-control">
+                    <span class="text-danger">{{ form.collegeLC }}</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Caste Certificate</label>
+                    <input type="file" id="caste" name="casteCertificate" class="form-control">
+                    <span class="text-danger">{{ form.casteCertificate }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Caste Validity Certificate</label>
+                    <input type="file" id="castVal" name="casteValidityCertificate" class="form-control">
+                    <span class="text-danger">{{ form.casteValidityCertificate }}</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Domicile Certificate</label>
+                    <input type="file" id="domicile" name="domicileCertificate" class="form-control">
+                    <span class="text-danger">{{ form.domicileCertificate }}</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Income Certificate</label>
+                    <input type="file" id="income" name="incomeCertificate" class="form-control">
+                    <span class="text-danger">{{ form.incomeCertificate }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Non-Creamy Layer Certificate</label>
+                    <input type="file" id="non-cremelayer" name="nonCreamyLayerCertificate" class="form-control">
+                    <span class="text-danger">{{ form.nonCreamyLayerCertificate }}</span>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mt-3">
+                    <label class="form-label">Aadhar Card</label>
+                    <input type="file" id="adhar" name="aadharCard" class="form-control">
+                    <span class="text-danger">{{ form.aadharCard }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+ 

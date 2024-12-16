@@ -1,0 +1,44 @@
+name: Auto Commit and Push Changes
+
+on:
+  push:
+    paths:
+      - '**/*'            # Watch all files in the repository
+    paths-ignore:
+      - 'static/**'       # Ignore all files in the `static` directory
+      - 'media/**'        # Ignore all files in the `media` directory
+      - '*.log'           # Ignore log files
+      - '*.tmp'           # Ignore temporary files
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config user.name "SOC2050"          # Replace with your GitHub username
+          git config user.email "gv2422244242@gmail.com" # Replace with your GitHub email
+
+      - name: Commit and Push changes
+        run: |
+          # Check for changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            
+            # Extract the latest commit message
+            latest_message=$(git log -1 --pretty=%B)
+            
+            # Use the existing message or auto-generate if empty
+            if [ -z "$latest_message" ]; then
+              latest_message="Auto-commit at $(date '+%Y-%m-%d %H:%M:%S')"
+            fi
+            
+            git commit -m "$latest_message"
+            git push origin main
+          else
+            echo "No changes to commit."
+          fi
+

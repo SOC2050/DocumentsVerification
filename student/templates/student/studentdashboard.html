@@ -1,0 +1,66 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block pagecss %}
+
+<link rel="stylesheet" href="{% static 'student/CSS/studDash.css' %}" type="text/css" media="all" />
+
+{% if section == "application" %}
+<link rel="stylesheet" href="{% static 'student/CSS/application.css' %}" type="text/css" media="all">
+{% elif section == "updatedocuments" %}
+<link rel="stylesheet" href="{% static 'student/CSS/updatedocuments.css' %}" type="text/css" media="all">
+{% elif section == "report" %}
+<link rel="stylesheet" href="{% static 'student/CSS/report.css' %}" type="text/css" media="all">
+{% endif %}
+{% endblock %}
+
+{% block mainpage %}
+
+<div class="student-dashboard  ">
+
+
+    <div class="sidebar ">
+        <div>
+            <img class="profile-photo" src="{{values.photo }}" alt="profile">
+        </div>
+        <br>
+        <ul>
+            <li {% if section == "application" %} class="bg-success" {% endif %}><a href="{% url 'StudentDashboard' %}?section=application">My Details</a></li>
+            <li {% if section == "updatedocuments" %} class="bg-success" {% endif %}><a href="{% url 'StudentDashboard' %}?section=updatedocuments">Update Documents</a></li>
+            <li {% if section == "report" %} class="bg-success"  {% endif %}><a href="{% url 'StudentDashboard' %}?section=report">Report</a></li>
+        </ul>
+    </div>
+
+    <div class="content ">
+
+        <div class="application-content">
+            
+            {% if section == "application" %}
+
+            <h2 class="mb-4">My Application </h2>
+            {% include "student/mydetails.html" %}
+
+            {% elif section == "updatedocuments" %}
+
+            <h2 class="mb-4"> Update Documents </h2>
+            {% include "student/updatedocuments.html" %}
+
+            {% elif section == "report" %}
+
+            <h2 class="mb-4"> Report </h2>
+            {% include "student/report.html" %}
+
+            {% else %}
+
+            <h1 class="">Welcome , To Student Dashboard </h1>
+
+            {% endif %}
+            
+        </div>
+        
+    </div>
+
+
+</div>
+{% endblock %}

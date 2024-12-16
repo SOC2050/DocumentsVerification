@@ -1,0 +1,25 @@
+<div class="menu-bar ">
+    {% if  request.session.login %}
+    {% if request.session.Role == "Student" %}
+
+    {% if not currStudent %}
+
+    <a href="{% url 'StudentApplication' %}"><i class="fa fa-plus"></i> New Application</a>
+
+    {% else %}
+
+    <a href="{% url 'StudentDashboard'  %}"><i class="fa fa-plus"></i> Student Dashboard </a>
+
+    {% endif %}
+
+    <a href="{% url 'Logout' %}"><i class="fa fa-sign-out"></i> Log Out</a>
+    {% elif request.session.Role == "Administrator" %}
+    <a href="{% url 'instituteDashboard' %}"><i class="fa fa-check"></i> Institute Dashboard</a>
+    <a href="{% url 'Logout' %}"><i class="fa fa-sign-out"></i> Log Out</a>
+    {% endif %}
+    {% else %}
+    <a href="{% url 'StudentRegisteration'  %}"><i class="fa fa-user-plus"></i> Registration</a>
+    <a href="{% url 'login'  %}"><i class="fa fa-sign-in"></i> Log In</a>
+    {% endif %}
+
+</div>

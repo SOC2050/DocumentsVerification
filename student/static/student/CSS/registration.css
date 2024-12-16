@@ -1,0 +1,67 @@
+.container {
+    max-width: 500px;
+    height: auto;
+    margin: 5px auto;
+    padding: 1rem  2rem ;
+    background-color: rgba( 240 , 250 , 250 , 0.7) ;
+    border-radius: 10px;
+    box-shadow: 2px 4px 15px rgb(43 ,43, 43);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #555;
+    display: block;
+    margin-bottom: 2px;
+    font-size: 1.3rem ;
+}
+
+input.form-control, select.form-control {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-size: 16px;
+    color: #333;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+input.form-control:focus, select.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+.btnn {
+    background-color: #8654cd;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+
+.mb-3 {
+    margin-top: 0.8rem;
+}
+
+.text-danger {
+    color: #dc3545;
+    font-size: 0.875em;
+    margin-top: 0.25em;
+}
